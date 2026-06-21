@@ -1,0 +1,44 @@
+erDiagram
+    CATEGORIAS ||--o{ PRODUTOS : contem
+    CLIENTES ||--o{ PEDIDOS : realiza
+    PEDIDOS ||--o{ ITEM_PEDIDO : possui
+    PRODUTOS ||--o{ ITEM_PEDIDO : pertence_a
+
+    CATEGORIAS {
+        int id PK
+        string nome
+        string descricao
+    }
+
+    PRODUTOS {
+        int id PK
+        int id_categoria FK
+        string nome
+        string subcategoria
+        decimal preco
+        text descricao
+        string imagem
+    }
+
+    CLIENTES {
+        int id PK
+        string nome
+        string email
+        string telefone
+        timestamp data_cadastro
+    }
+
+    PEDIDOS {
+        int id PK
+        int id_cliente FK
+        datetime data_pedido
+        string status
+        decimal total
+    }
+
+    ITEM_PEDIDO {
+        int id_pedido PK, FK
+        int id_produto PK, FK
+        int quantidade
+        decimal preco_unitario
+    }
